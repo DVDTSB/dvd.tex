@@ -13,3 +13,7 @@ This is mostly a nicer to look at version of [evan.sty](https://github.com/vEnha
 ## How to use:
 - add the wanted file to your work folder
 - add `\input{tex/preamble}` to your `main.tex` file
+
+## To Do
+- make this an `.sty` file for easier customization
+- add examples
