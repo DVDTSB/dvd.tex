@@ -124,7 +124,6 @@
 shadowsize=6pt,
 }
 
-
 \mdfdefinestyle{mdorangebox}{%
     roundcorner = 2pt,
 	linewidth=1.5pt,
@@ -165,6 +164,18 @@ shadowsize=5pt,
 	linecolor=Red3,
     backgroundcolor=Red1!5
 }
+\mdfdefinestyle{mdlimebox}{%
+    roundcorner = 1pt,
+	skipabove=8pt,
+	linewidth=2pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	linecolor=Chartreuse3,
+    backgroundcolor=Chartreuse1!5
+}
+
 
 \mdfdefinestyle{mdgruebox}{%
     roundcorner = 1pt,
@@ -323,6 +334,29 @@ shadowsize=5pt,
 ]{thmredbox*}
 
 \declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Chartreuse3!80!black},
+	bodyfont=\color{Chartreuse!30!black!},
+	spaceabove=2pt,
+	spacebelow=1pt,
+	mdframed={style=mdlimebox},
+]{thmlimebox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Chartreuse3!80!black},
+    notefont=\bfseries\sffamily\color{Chartreuse3!80!black},
+	bodyfont=\color{Chartreuse!30!black!},
+	spaceabove=2pt,
+	spacebelow=1pt,
+	mdframed={style=mdlimebox},
+    notebraces={}{},
+    numbered=no,
+    name={},
+    refname = \NOTE,
+    headformat=\NOTE,
+    headindent =-\fontdimen2\font,
+]{thmlimebox*}
+
+\declaretheoremstyle[
     headfont=\bfseries\sffamily\color{SpringGreen4},
 	bodyfont=\color{SpringGreen!30!black!},
 	spaceabove=2pt,
@@ -406,6 +440,12 @@ style=thmbluebox,name=Teorema]{theorem}
 \declaretheorem[style=thmredbox*,name=]{mistake**}
 
 \declaretheorem[name=Greseala,style=thmredbox,numbered = no]{mistake*}
+
+\declaretheorem[name=Indiciu,style=thmlimebox,sibling=theorem]{hint}
+
+\declaretheorem[style=thmlimebox*,name=]{hint**}
+
+\declaretheorem[name=Indiciu,style=thmlimebox,numbered = no]{hint*}
 
 \declaretheorem[name=Proprietate,style=thmcyanbox,sibling=theorem]{property}
 
