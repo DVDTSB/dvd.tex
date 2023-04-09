@@ -154,6 +154,17 @@ shadowsize=5pt,
 	linecolor=SpringGreen3,
     backgroundcolor=SpringGreen1!5
 }
+\mdfdefinestyle{mdredbox}{%
+    roundcorner = 1pt,
+	skipabove=8pt,
+	linewidth=2pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	linecolor=Red3,
+    backgroundcolor=Red1!5
+}
 
 \mdfdefinestyle{mdgruebox}{%
     roundcorner = 1pt,
@@ -196,7 +207,7 @@ shadowsize=5pt,
 
 
 \declaretheoremstyle[
-	headfont=\sffamily\bfseries\color{DodgerBlue4},
+	headfont=\sffamily\bfseries\color{DodgerBlue3!80!black!},
     bodyfont=\color{DodgerBlue!30!black!},
 	mdframed={style=mdbluebox},
 	headpunct={.\\[3pt]},
@@ -204,8 +215,8 @@ shadowsize=5pt,
 ]{thmbluebox}
 
 \declaretheoremstyle[
-	headfont=\sffamily\bfseries\color{DodgerBlue4},
-    notefont=\sffamily\bfseries\color{DodgerBlue4},
+	headfont=\sffamily\bfseries\color{DodgerBlue3!80!black!},
+    notefont=\sffamily\bfseries\color{DodgerBlue3!80!black!},
     bodyfont=\color{DodgerBlue!30!black!},
 	mdframed={style=mdbluebox},
 	headpunct={\\},
@@ -287,6 +298,30 @@ shadowsize=5pt,
 ]{thmgruebox*}
 
 
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Red3!80!black},
+	bodyfont=\color{Red!30!black!},
+	spaceabove=2pt,
+	spacebelow=1pt,
+	mdframed={style=mdredbox},
+]{thmredbox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Red3!80!black},
+    notefont=\bfseries\sffamily\color{Red3!80!black},
+	bodyfont=\color{Red!30!black!},
+	spaceabove=2pt,
+	spacebelow=1pt,
+	mdframed={style=mdredbox},
+    notebraces={}{},
+    numbered=no,
+    name={},
+    refname = \NOTE,
+    headformat=\NOTE,
+    headindent =-\fontdimen2\font,
+]{thmredbox*}
+
 \declaretheoremstyle[
     headfont=\bfseries\sffamily\color{SpringGreen4},
 	bodyfont=\color{SpringGreen!30!black!},
@@ -365,6 +400,12 @@ style=thmbluebox,name=Teorema]{theorem}
 \declaretheorem[style=thmgreenbox*,name=]{defintion**}
 
 \declaretheorem[name=Definitie,style=thmgreenbox,numbered = no]{definition*}
+
+\declaretheorem[name=Greseala,style=thmredbox,sibling=theorem]{mistake}
+
+\declaretheorem[style=thmredbox*,name=]{mistake**}
+
+\declaretheorem[name=Greseala,style=thmredbox,numbered = no]{mistake*}
 
 \declaretheorem[name=Proprietate,style=thmcyanbox,sibling=theorem]{property}
 
