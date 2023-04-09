@@ -15,6 +15,7 @@ This is mostly a nicer to look at version of [evan.sty](https://github.com/vEnha
 - add `\input{tex/preamble}` to your `main.tex` file
 
 ## To Do
+- languages
 - make this an `.sty` file for easier customization
 - asy geometry
 - nicer general enviorments (section,chapter,etc)
