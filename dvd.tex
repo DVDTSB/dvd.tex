@@ -61,7 +61,7 @@
 \usepackage{float}
 \hypersetup{
     colorlinks,
-    linkcolor={red!50!black},
+    linkcolor={DodgerBlue3},
     citecolor={SpringGreen!50!black},
     urlcolor={blue!80!black}
 }
@@ -91,28 +91,37 @@
 \lofoot{}
 \cfoot{\pagemark}
 \makeatother
+\colorlet{everything}{DodgerBlue2}
+
 %%fakesection Fancy section and chapter heads
-\renewcommand*{\sectionformat}{\color{purple}\S\thesection\autodot\enskip}
-\renewcommand*{\subsectionformat}{\color{purple}\S\thesubsection\autodot\enskip}
-\newcommand{\problemhead}{A few harder problems to think about}
+
+\renewcommand*{\sectionformat}
+{\color{everything}\S\thesection\autodot\enskip}
+
+\renewcommand*{\subsectionformat}{\color{everything}\S\thesubsection\autodot\enskip}
 \renewcommand{\thesubsection}{\thesection.\roman{subsection}}
+
+
+\renewcommand*\chapterpagestyle{scrheadings}
 
 \addtokomafont{chapterprefix}{\raggedleft}
 \RedeclareSectionCommand[beforeskip=0.5em]{chapter}
 \renewcommand*{\chapterformat}{%
 \mbox{\scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
-\scalebox{2.718}{\color{purple}\thechapter\autodot}\enskip}}
+\scalebox{2.718}{\color{everything}\thechapter\autodot}\enskip}}
 
 \addtokomafont{partprefix}{\rmfamily}
-\renewcommand*{\partformat}{\color{purple}\scalebox{2.5}{\thepart}}
+\renewcommand*{\partformat}{\color{everything}\scalebox{2.5}{\thepart}}
 
 \usepackage{thmtools}
 \usepackage[framemethod=TikZ]{mdframed}
 \usetikzlibrary{shadows}
 \theoremstyle{definition}
 
+
 \mdfdefinestyle{mdbluebox}{%
-	roundcorner = 3pt,
+	default,  
+        roundercorner= 3pt,
 	linewidth=1.5pt,
 	skipabove=12pt,
 	innerbottommargin=9pt,
@@ -124,8 +133,27 @@
 shadowsize=6pt,
 }
 
+\mdfdefinestyle{mdimp}{%
+    default, roundcorner = 3pt,
+	linewidth=1.5pt,
+	skipabove=12pt,
+	innerbottommargin=9pt,
+	skipbelow=2pt,
+	nobreak=true,
+	linecolor=Azure4,
+        backgroundcolor=Azure3!10,
+ shadow=true,
+shadowsize=5pt,
+}
+
+\declaretheoremstyle[
+    mdframed={style=mdimp},
+    headpunct={}
+]{thmimp}
+
+
 \mdfdefinestyle{mdorangebox}{%
-    roundcorner = 2pt,
+    default, roundcorner = 2pt,
 	linewidth=1.5pt,
 	skipabove=12pt,
 	frametitleaboveskip=5pt,
@@ -141,9 +169,21 @@ shadowsize=6pt,
 shadowsize=5pt,
 }
 
+\mdfdefinestyle{mdproof}{%
+    default, roundcorner = 1pt,
+	skipabove=8pt,
+	linewidth=2pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	linecolor=Azure4,
+    backgroundcolor=Azure3!10
+}
+
 
 \mdfdefinestyle{mdgreenbox}{%
-    roundcorner = 1pt,
+    default, roundcorner = 1pt,
 	skipabove=8pt,
 	linewidth=2pt,
 	rightline=false,
@@ -154,7 +194,7 @@ shadowsize=5pt,
     backgroundcolor=SpringGreen1!5
 }
 \mdfdefinestyle{mdredbox}{%
-    roundcorner = 1pt,
+    default, roundcorner = 1pt,
 	skipabove=8pt,
 	linewidth=2pt,
 	rightline=false,
@@ -165,7 +205,7 @@ shadowsize=5pt,
     backgroundcolor=Red1!5
 }
 \mdfdefinestyle{mdlimebox}{%
-    roundcorner = 1pt,
+    default, roundcorner = 1pt,
 	skipabove=8pt,
 	linewidth=2pt,
 	rightline=false,
@@ -178,7 +218,7 @@ shadowsize=5pt,
 
 
 \mdfdefinestyle{mdgruebox}{%
-    roundcorner = 1pt,
+    default, roundcorner = 1pt,
 	skipabove=8pt,
 	linewidth=2pt,
 	rightline=false,
@@ -190,7 +230,7 @@ shadowsize=5pt,
 }
 
 \mdfdefinestyle{mdcyanbox}{%
-    roundcorner = 1pt,
+    default, roundcorner = 1pt,
 	skipabove=8pt,
 	linewidth=2pt,
 	rightline=false,
@@ -204,7 +244,7 @@ shadowsize=5pt,
 
 
 \mdfdefinestyle{mdblackbox}{%
-    roundcorner = 3pt,
+    default, roundcorner = 3pt,
 	skipabove=8pt,
 	linewidth=3pt,
 	rightline=false,
@@ -403,15 +443,36 @@ shadowsize=5pt,
     headindent =-\fontdimen2\font,
 ]{thmblackbox*}
 
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{black},
+    bodyfont=\color{black},
+]{solution}
+
 
 %%%%%%%  AICI PUI parent=section/chapter sau orice nu imi pasa
 
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{
+\begin{mdframed}[style=mdproof]
+\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+            \color{Azure4!60!black!}\sffamily\bfseries
+    #1\@addpunct{.}]\ignorespaces
+}{%
 
+  \popQED\endtrivlist\@endpefalse
+  \end{mdframed}
+}
+\makeatother
 
+\declaretheorem[style=thmimp,numbered=no,name=]{important}
 \declaretheorem[%
 style=thmbluebox,name=Teorema]{theorem}
-\declaretheorem[style=thmbluebox,name=Lema,sibling=theorem]{lemma}
-\declaretheorem[style=thmbluebox,name=Corolar,sibling=theorem]{corollary}
+\declaretheorem[style=thmbluebox,name=Lema]{lemma}
+\declaretheorem[style=thmbluebox,name=Corolar]{corollary}
 
 \declaretheorem[style=thmbluebox*,name=]{theorem**}
 
@@ -419,8 +480,8 @@ style=thmbluebox,name=Teorema]{theorem}
 \declaretheorem[style=thmbluebox,name=Lema, numbered = no]{lemma*}
 \declaretheorem[style=thmbluebox,name=Corolar, numbered = no]{corollary*}
 
-\declaretheorem[style=thmorangebox,name=Exemplu,sibling=theorem]{example}
-\declaretheorem[style=thmorangebox,name=Problema,sibling=theorem]{problem}
+\declaretheorem[style=thmorangebox,name=Exemplu]{example}
+\declaretheorem[style=thmorangebox,name=Problema]{problem}
 
 \declaretheorem[style=thmorangebox*,name=]{example**}
 \declaretheorem[style=thmorangebox*,name=]{problem**}
@@ -429,37 +490,37 @@ style=thmbluebox,name=Teorema]{theorem}
 \declaretheorem[style=thmorangebox,name=Exemplu,numbered = no]{example*}
 \declaretheorem[style=thmorangebox,name=Problema,numbered = no]{problem*}
 
-\declaretheorem[name=Definitie,style=thmgreenbox,sibling=theorem]{definition}
+\declaretheorem[name=Definitie,style=thmgreenbox]{definition}
 
 \declaretheorem[style=thmgreenbox*,name=]{defintion**}
 
 \declaretheorem[name=Definitie,style=thmgreenbox,numbered = no]{definition*}
 
-\declaretheorem[name=Greseala,style=thmredbox,sibling=theorem]{mistake}
+\declaretheorem[name=Greseala,style=thmredbox]{mistake}
 
 \declaretheorem[style=thmredbox*,name=]{mistake**}
 
 \declaretheorem[name=Greseala,style=thmredbox,numbered = no]{mistake*}
 
-\declaretheorem[name=Indiciu,style=thmlimebox,sibling=theorem]{hint}
+\declaretheorem[name=Indiciu,style=thmlimebox]{hint}
 
 \declaretheorem[style=thmlimebox*,name=]{hint**}
 
 \declaretheorem[name=Indiciu,style=thmlimebox,numbered = no]{hint*}
 
-\declaretheorem[name=Proprietate,style=thmcyanbox,sibling=theorem]{property}
+\declaretheorem[name=Proprietate,style=thmcyanboxem]{property}
 
 \declaretheorem[style=thmcyanbox*,name=]{property**}
 
 \declaretheorem[name=Proprietate,style=thmcyanbox,numbered = no]{property*}
 
-\declaretheorem[name=Observatie,style=thmgruebox,sibling=theorem]{observation}
+\declaretheorem[name=Observatie,style=thmgruebox]{observation}
 
 \declaretheorem[style=thmgruebox*,name=]{observation**}
 
 \declaretheorem[name=Observatie,style=thmgruebox,numbered = no]{observation*}
 
-\declaretheorem[name=Exercitiu,style=thmblackbox,sibling=theorem]{exercise}
+\declaretheorem[name=Exercitiu,style=thmblackbox]{exercise}
 
 \declaretheorem[style=thmblackbox*,name=]{exercise**}
 
@@ -511,3 +572,10 @@ style=thmbluebox,name=Teorema]{theorem}
 \doparttoc[n]
 
 \pdfstringdefDisableCommands{\def\Spec{\text{Spec }}}
+
+\makeatletter
+\newcommand{\oset}[3][0ex]{%
+  \mathrel{\mathop{#3}\limits^{
+    \vbox to#1{\kern-2\ex@
+    \hbox{$\scriptstyle#2$}\vss}}}}
+\makeatother
