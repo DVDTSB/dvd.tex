@@ -452,7 +452,7 @@ shadowsize=5pt,
 %%%%%%%  AICI PUI parent=section/chapter sau orice nu imi pasa
 
 \makeatletter
-\renewenvironment{proof}[1][\proofname]{
+\newenvironment{prf}[1][\proofname]{
 \begin{mdframed}[style=mdproof]
 \par
   \pushQED{\qed}%
@@ -465,6 +465,19 @@ shadowsize=5pt,
 
   \popQED\endtrivlist\@endpefalse
   \end{mdframed}
+}
+
+\renewenvironment{proof}[1][\proofname]{
+\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+            \color{CadetBlue!70!black!}\sffamily\bfseries
+    #1\@addpunct{.}]\ignorespaces
+}{%
+
+  \popQED\endtrivlist\@endpefalse
 }
 \makeatother
 
