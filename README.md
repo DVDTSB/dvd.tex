@@ -10,6 +10,9 @@
 Collection of LaTex templates I use daily.
 This is mostly a nicer to look at version of [evan.sty](https://github.com/vEnhance/dotfiles/blob/main/texmf/tex/latex/evan/evan.sty).
 
+## Updates
+- added a proof enviorment
+
 ## How to use:
 - add the wanted file to your work folder
 - add `\input{tex/preamble}` to your `main.tex` file
