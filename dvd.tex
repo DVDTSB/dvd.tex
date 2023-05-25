@@ -1,11 +1,11 @@
-%https://github.com/DVDTSB/dvd.tex/edit/main/dvd.tex
+%https://github.com/DVDTSB/dvd.tex
 %██████╗░██╗░░░██╗██████╗░░░░████████╗███████╗██╗░░██╗
 %██╔══██╗██║░░░██║██╔══██╗░░░╚══██╔══╝██╔════╝╚██╗██╔╝
 %██║░░██║╚██╗░██╔╝██║░░██║░░░░░░██║░░░█████╗░░░╚███╔╝░
 %██║░░██║░╚████╔╝░██║░░██║░░░░░░██║░░░██╔══╝░░░██╔██╗░
 %██████╔╝░░╚██╔╝░░██████╔╝██╗░░░██║░░░███████╗██╔╝╚██╗
 %╚═════╝░░░░╚═╝░░░╚═════╝░╚═╝░░░╚═╝░░░╚══════╝╚═╝░░╚═╝                                          
-%https://github.com/DVDTSB/dvd.tex/dvd.tex
+%https://github.com/DVDTSB/dvd.tex
 %Boost Software License - Version 1.0 - August 17th, 2003
 
 %Copyright (c) 2023 DVDTSB [DVDTSB at github.com/DVDTSB]
@@ -78,7 +78,6 @@
 
 \def\shortdate{\leavevmode\hbox{\the\year-\twodigits\month-\twodigits\day}}
 \def\twodigits#1{\ifnum#1<10 0\fi\the#1}
-\automark[chapter]{chapter}
 \makeatletter
 \rohead{}
 \rehead{}
@@ -91,7 +90,7 @@
 \lofoot{}
 \cfoot{\pagemark}
 \makeatother
-\colorlet{everything}{DodgerBlue2}
+\colorlet{everything}{purple}
 
 %%fakesection Fancy section and chapter heads
 
@@ -102,13 +101,6 @@
 \renewcommand{\thesubsection}{\thesection.\roman{subsection}}
 
 
-\renewcommand*\chapterpagestyle{scrheadings}
-
-\addtokomafont{chapterprefix}{\raggedleft}
-\RedeclareSectionCommand[beforeskip=0.5em]{chapter}
-\renewcommand*{\chapterformat}{%
-\mbox{\scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
-\scalebox{2.718}{\color{everything}\thechapter\autodot}\enskip}}
 
 \addtokomafont{partprefix}{\rmfamily}
 \renewcommand*{\partformat}{\color{everything}\scalebox{2.5}{\thepart}}
@@ -212,8 +204,8 @@ shadowsize=5pt,
 	leftline=true,
 	topline=false,
 	bottomline=false,
-	linecolor=Chartreuse3,
-    backgroundcolor=Chartreuse1!5
+	linecolor=Chartreuse3!90!black!,
+    backgroundcolor=Chartreuse2!5
 }
 
 
@@ -252,7 +244,7 @@ shadowsize=5pt,
 	topline=false,
 	bottomline=false,
 	linecolor=black,
-	backgroundcolor=Thistle4!5,
+	backgroundcolor=Thistle4!10,
 }
 
 
@@ -375,7 +367,7 @@ shadowsize=5pt,
 
 \declaretheoremstyle[
     headfont=\bfseries\sffamily\color{Chartreuse3!80!black},
-	bodyfont=\color{Chartreuse!30!black!},
+	bodyfont=\color{Chartreuse2!30!black!},
 	spaceabove=2pt,
 	spacebelow=1pt,
 	mdframed={style=mdlimebox},
@@ -384,7 +376,7 @@ shadowsize=5pt,
 \declaretheoremstyle[
     headfont=\bfseries\sffamily\color{Chartreuse3!80!black},
     notefont=\bfseries\sffamily\color{Chartreuse3!80!black},
-	bodyfont=\color{Chartreuse!30!black!},
+	bodyfont=\color{Chartreuse2!30!black!},
 	spaceabove=2pt,
 	spacebelow=1pt,
 	mdframed={style=mdlimebox},
@@ -493,14 +485,14 @@ style=thmbluebox,name=Teorema]{theorem}
 \declaretheorem[style=thmbluebox,name=Lema, numbered = no]{lemma*}
 \declaretheorem[style=thmbluebox,name=Corolar, numbered = no]{corollary*}
 
-\declaretheorem[style=thmorangebox,name=Exemplu]{example}
+\declaretheorem[style=thmorangebox,name=Exemplul]{example}
 \declaretheorem[style=thmorangebox,name=Problema]{problem}
 
 \declaretheorem[style=thmorangebox*,name=]{example**}
 \declaretheorem[style=thmorangebox*,name=]{problem**}
 
 
-\declaretheorem[style=thmorangebox,name=Exemplu,numbered = no]{example*}
+\declaretheorem[style=thmorangebox,name=Exemplul,numbered = no]{example*}
 \declaretheorem[style=thmorangebox,name=Problema,numbered = no]{problem*}
 
 \declaretheorem[name=Definitie,style=thmgreenbox]{definition}
@@ -533,29 +525,27 @@ style=thmbluebox,name=Teorema]{theorem}
 
 \declaretheorem[name=Observatie,style=thmgruebox,numbered = no]{observation*}
 
-\declaretheorem[name=Exercitiu,style=thmblackbox]{exercise}
+\declaretheorem[name=Exercitiul,style=thmblackbox]{exercise}
 
 \declaretheorem[style=thmblackbox*,name=]{exercise**}
 
-\declaretheorem[name=Exercitiu,style=thmblackbox,numbered = no]{exercise*}
+\declaretheorem[name=Exercitiul,style=thmblackbox,numbered = no]{exercise*}
 
 %%fakesection Table of contents
 % First add ToC to ToC
 \makeatletter
 \usepackage{etoolbox}
 \pretocmd{\tableofcontents}{%
-  \if@openright\cleardoublepage\else\clearpage\fi
   \pdfbookmark[0]{\contentsname}{toc}%
 }{}{}%
 \makeatother
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 \RedeclareSectionCommand[tocnumwidth=4.2em]{part}
-\RedeclareSectionCommand[tocnumwidth=4.2em]{chapter}
 \RedeclareSectionCommand[tocnumwidth=2.8em]{section}
 
 
 %%fakesection Bibliography
-\usepackage[backend=biber,style=alphabetic]{biblatex}
+\usepackage[backend=biber,style=numeric]{biblatex}
 \DeclareLabelalphaTemplate{
 	\labelelement{
 		\field[final]{shorthand}
@@ -568,11 +558,9 @@ style=thmbluebox,name=Teorema]{theorem}
 }
 \DeclareFieldFormat{labelalpha}{\textbf{\scriptsize #1}}
 \addbibresource{references.bib}
-\addbibresource{images.bib}
 
 %%fakesection Mini ToC
 \usepackage[tight]{minitoc}
-\mtcsetfont{parttoc}{chapter}{\sffamily\bfseries}
 \mtcsetfont{parttoc}{section}{\footnotesize\rmfamily\upshape\mdseries}
 \mtcsetfont{parttoc}{subsection}{\footnotesize\rmfamily\upshape\mdseries}
 %\mtcsetdepth{parttoc}{1}
