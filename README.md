@@ -21,7 +21,7 @@ This is mostly a nicer to look at version of [evan.sty](https://github.com/vEnha
 - [ ] make this an `.sty` file for easier customization - working on this
 - [ ] asy geometry
 - [ ] nicer general enviorments (section,chapter,etc)
-- [ ] add examples
+- [ ] add examples - and this
 
 ## Contribute
 - If you have anything that you would like to be added add an issue on the github.
