@@ -7,7 +7,7 @@
 ██████╔╝░░╚██╔╝░░██████╔╝██╗░░░██║░░░███████╗██╔╝╚██╗
 ╚═════╝░░░░╚═╝░░░╚═════╝░╚═╝░░░╚═╝░░░╚══════╝╚═╝░░╚═╝
 ```
-Collection of LaTex templates I use daily.
+My LaTeX template.
 This is mostly a nicer to look at version of [evan.sty](https://github.com/vEnhance/dotfiles/blob/main/texmf/tex/latex/evan/evan.sty), however it might not have everything that is included in evan.sty yet.
 
 ## Updates
